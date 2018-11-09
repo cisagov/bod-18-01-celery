@@ -15,11 +15,6 @@ SslyzeLambdaName = 'sslyze'
 
 
 @app.task
-def add(a, b):
-    return a + b
-
-
-@app.task
 def trustymail(domain_name, timeout=30, smtp_timeout=5,
                smtp_localhost=None, smtp_ports=None,
                scan_types=None, dns_hostnames=None):
