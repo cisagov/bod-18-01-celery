@@ -2,11 +2,11 @@
 
 # bump_version.sh (show|major|minor|patch|prerelease|build)
 
-VERSION_FILE=version.txt
+VERSION_FILE=bod-18-01/__init__.py
 
 HELP_INFORMATION="bump_version.sh (show|major|minor|patch|prerelease|build|finalize)"
 
-old_version=$(cat $VERSION_FILE)
+old_version=$(sed -n "s/^__version__ = '\(.*\)'$/\1/p" $VERSION_FILE)
 
 if [[ $# -ne 1 ]]
 then
@@ -18,7 +18,7 @@ else
             echo Changing version from $old_version to $new_version
             sed -i "s/$old_version/$new_version/" $VERSION_FILE
             git add $VERSION_FILE
-            git commit -m"Bumped version from $old_version to $new_version"
+            git commit -m"Bump version from $old_version to $new_version"
             git push
             ;;
         finalize)
@@ -26,7 +26,7 @@ else
             echo Changing version from $old_version to $new_version
             sed -i "s/$old_version/$new_version/" $VERSION_FILE
             git add $VERSION_FILE
-            git commit -m"Finalizing version from $old_version to $new_version"
+            git commit -m"Finalize version from $old_version to $new_version"
             git push
             ;;
         show)
