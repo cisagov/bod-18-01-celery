@@ -4,6 +4,9 @@ from boto3 import client as boto3_client
 
 from .celery import app
 
+# The name of the AWS region to use
+AwsRegionName = 'us-west-1'
+
 # The name of the trustymail Lambda function
 TrustymailLambdaName = 'trustymail'
 
@@ -57,7 +60,7 @@ def trustymail(domain_name, timeout=30, smtp_timeout=5,
         object resulting from the scan activity.
     """
     # Boto3 client for Lambda
-    lambda_client = boto3_client('lambda')
+    lambda_client = boto3_client('lambda', region_name=AwsRegionName)
 
     # The payload for the Lambda function
     payload = {
@@ -135,7 +138,7 @@ def sslyze(hostname, port=443, timeout=5, starttls_smtp=False,
         activity.
     """
     # Boto3 client for Lambda
-    lambda_client = boto3_client('lambda')
+    lambda_client = boto3_client('lambda', region_name=AwsRegionName)
 
     # The payload for the Lambda function
     payload = {
@@ -149,7 +152,7 @@ def sslyze(hostname, port=443, timeout=5, starttls_smtp=False,
         'scan_tlsv13': scan_tlsv13,
         'scan_sslv20': scan_sslv20,
         'scan_sslv30': scan_sslv30,
-        'scan_cert-info': scan_cert_info
+        'scan_cert_info': scan_cert_info
     }
 
     # Perform a synchronous Lambda call
