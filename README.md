@@ -1,6 +1,6 @@
 # bod-18-01-celery :cloud: :zap: #
 
-[![Build Status](https://travis-ci.com/dhs-ncats/bod-18-01-celery.svg?branch=develop)](https://travis-ci.com/dhs-ncats/bod-18-01-celery)
+[![Build Status](https://travis-ci.com/cisagov/bod-18-01-celery.svg?branch=develop)](https://travis-ci.com/cisagov/bod-18-01-celery)
 
 `bod-18-01-celery` contains the
 [Celery](http://www.celeryproject.org/) code to used for running BOD
