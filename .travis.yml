@@ -1,0 +1,18 @@
+---
+language: python
+dist: xenial
+
+matrix:
+  include:
+    - python: 3.7
+
+before_install:
+  - sudo apt-get install -y shellcheck
+
+install:
+  - pip install flake8 yamllint
+
+script:
+  - shellcheck bump_version.sh tag.sh
+  - yamllint .travis.yml
+  - flake8 .
