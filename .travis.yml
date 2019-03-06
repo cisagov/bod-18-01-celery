@@ -1,0 +1,17 @@
+language: python
+dist: xenial
+sudo: true
+
+matrix:
+  include:
+    - python: 3.7
+
+before_install:
+  - sudo apt-get install -y shellcheck
+
+install:
+  - pip install flake8
+
+script:
+  - shellcheck bump_version.sh tag.sh
+  - flake8 .
